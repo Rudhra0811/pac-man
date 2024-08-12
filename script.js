@@ -21,37 +21,7 @@ let gameRunning = false;
 let dotsRemaining = 0;
 
 const maze = [
-    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-    [1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1],
-    [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1],
-    [1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1],
-    [1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1],
-    [1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,1,1,1,2,2,1,1,1,0,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,1,2,2,2,2,2,2,1,0,1,1,0,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,0,1,1,0,1,2,2,2,2,2,2,1,0,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1],
-    [1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-    [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1],
-    [1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1],
-    [1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1],
-    [1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1],
-    [1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1],
-    [1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1],
-    [1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    // ... (keep the maze array as it is)
 ];
 
 const ghosts = [
@@ -212,6 +182,7 @@ function moveGhosts() {
             }
         }
     });
+    checkGhostCollision();
 }
 
 function checkGhostCollision() {
@@ -278,26 +249,37 @@ function startGame() {
     lives = 3;
     powerMode = false;
     gameRunning = true;
-    
+
     updateScore();
     updateLives();
     levelElement.textContent = `Level: ${level}`;
-    
+
     createMaze();
     resetPositions();
     createGhosts();
-    
+
     gameOverElement.style.display = 'none';
     startScreenElement.style.display = 'none';
-    
+    gameBoard.style.display = 'grid';
+    pacman.style.display = 'block';
+
     gameLoop();
 }
 
-function gameLoop() {
-    if (gameRunning) {
+let lastTime = 0;
+const ghostMoveInterval = 200; // Move ghosts every 200ms
+
+function gameLoop(currentTime) {
+    if (!gameRunning) return;
+
+    const deltaTime = currentTime - lastTime;
+
+    if (deltaTime >= ghostMoveInterval) {
         moveGhosts();
-        requestAnimationFrame(gameLoop);
+        lastTime = currentTime;
     }
+
+    requestAnimationFrame(gameLoop);
 }
 
 document.addEventListener('keydown', (e) => {
@@ -320,8 +302,25 @@ document.addEventListener('keydown', (e) => {
 });
 
 function playSound(soundName) {
-    const audio = new Audio(`sounds/${soundName}.mp3`);
-    audio.play();
+    // Implement actual sound playing logic here
+    console.log(`Playing sound: ${soundName}`);
 }
 
+function initializeGame() {
+    createMaze();
+    updatePacmanPosition();
+    createGhosts();
+    startScreenElement.style.display = 'block';
+    gameOverElement.style.display = 'none';
+    gameBoard.style.display = 'grid';
+    pacman.style.display = 'block';
+
+    // Add these lines to check if elements are being created
+    console.log('Game board children:', gameBoard.children.length);
+    console.log('Pacman position:', pacman.style.left, pacman.style.top);
+}
+
+initializeGame();
+// Add event listeners
+document.getElementById('startButton').addEventListener('click', startGame);
 document.getElementById('playAgainButton').addEventListener('click', startGame);
