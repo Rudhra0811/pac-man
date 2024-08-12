@@ -7,11 +7,9 @@ body {
     background-color: #000;
     font-family: Arial, sans-serif;
 }
-
 #gameContainer {
     position: relative;
 }
-
 #gameBoard {
     display: grid;
     grid-template-columns: repeat(28, 20px);
@@ -19,17 +17,14 @@ body {
     gap: 1px;
     background-color: #000;
 }
-
 .cell {
     width: 20px;
     height: 20px;
     background-color: #000;
 }
-
 .wall {
     background-color: #00f;
 }
-
 .dot {
     background-color: #fff;
     border-radius: 50%;
@@ -37,7 +32,6 @@ body {
     height: 6px;
     margin: 7px;
 }
-
 .power-pellet {
     background-color: #fff;
     border-radius: 50%;
@@ -45,26 +39,37 @@ body {
     height: 12px;
     margin: 4px;
 }
-
 #pacman {
     width: 20px;
     height: 20px;
     background-color: yellow;
     border-radius: 50%;
     position: absolute;
+    transition: left 0.2s, top 0.2s;
 }
-
 .ghost {
     width: 20px;
     height: 20px;
     border-radius: 50% 50% 0 0;
     position: absolute;
+    transition: left 0.2s, top 0.2s;
 }
-
 #score {
     color: #fff;
     font-size: 20px;
     position: absolute;
     top: -30px;
     left: 0;
+}
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
 }
