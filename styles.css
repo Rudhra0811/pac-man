@@ -9,6 +9,8 @@ body {
 }
 #gameContainer {
     position: relative;
+    width: 560px;
+    height: 620px;
 }
 #gameBoard {
     display: grid;
@@ -54,14 +56,16 @@ body {
     position: absolute;
     transition: left 0.2s, top 0.2s;
 }
-#score {
+#score, #level, #lives {
     color: #fff;
     font-size: 20px;
     position: absolute;
     top: -30px;
-    left: 0;
 }
-#gameOver {
+#score { left: 0; }
+#level { left: 50%; transform: translateX(-50%); }
+#lives { right: 0; }
+#gameOver, #startScreen {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -72,4 +76,16 @@ body {
     border-radius: 10px;
     text-align: center;
     display: none;
+}
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
